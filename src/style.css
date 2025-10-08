@@ -1,0 +1,686 @@
+@import "tailwindcss";
+
+/* ======================
+   CSS CUSTOM PROPERTIES
+   ====================== */
+:root {
+    --background-color-light: #fff;
+    --background-color-dark: #1E1E1E;
+  --color-primary: hsl(250, 90%, 60%);
+  --color-primary-hover: hsl(250, 90%, 55%);
+  --color-dark: #000;
+  --color-dark-hover: hsl(0, 0%, 20%);
+  --color-light: #fff;
+  --border-color-light: #000;
+  --border-color-dark: #fff;
+  --color-gray: #242424;
+  --color-gray-light: #f5f5f5;
+  --color-gray-lighter: #f9f9f9;
+  --color-text-secondary: gray;
+  --color-border: hsl(0, 0%, 90%);
+  --color-bg-product: hsl(210, 20%, 95%);
+
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 5rem;
+
+  --border-radius-sm: 6px;
+  --border-radius-md: 10px;
+  --border-radius-lg: 12px;
+  --border-radius-full: 50px;
+
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.3s ease;
+
+  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.app{
+    background-color: var(--background-color-light);
+    color: var(--color-dark);
+    min-height: 100vh;
+    transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+.app.dark{
+    background-color: var(--background-color-dark);
+    color: var(--color-light);
+}
+
+.app.dark .Category-container,
+.app.dark .Products-container {
+    background: var(--background-color-dark);
+}
+
+.app.dark .Category-container h1,
+.app.dark .Products-container h1,
+.app.dark .category-name,
+.app.dark .product-text,
+.app.dark .product-para,
+.app.dark .product-category,
+.app.dark .contact-heading,
+.app.dark .contact-para {
+    color: var(--color-light);
+}
+
+.app.dark .category-card,
+.app.dark .Product-card {
+    background: #2a2a2a;
+    border-color: #444;
+}
+
+.app.dark .category-card .icon {
+    color: var(--color-light);
+}
+
+.app.dark .contact {
+    background: #2a2a2a;
+}
+
+.app.dark .heading,
+.app.dark .para {
+    color: var(--color-dark);
+}
+
+.app.dark .shop-Btn {
+    background: var(--color-dark);
+    color: var(--color-light);
+}
+
+.app.dark .shop-Btn:hover {
+    background: var(--color-dark-hover);
+}
+
+/* ======================
+   NAVBAR
+   ====================== */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px 7%;
+  background-color: transparent;
+  transition: background-color var(--transition-slow);
+}
+
+.navbar.navbar--dark { background-color: #000; }
+
+.Logo {
+    width: 150px;
+    height: auto;
+    padding-top: 0;
+  cursor: pointer;
+}
+
+.navbar ul {
+  flex: 1;
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li {
+  display: inline-block;
+  margin: var(--spacing-xs) var(--spacing-md);
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: opacity var(--transition-base);
+}
+
+.navbar ul li:hover {
+  opacity: 0.8;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  margin-right: var(--spacing-lg);
+  padding: 0 var(--spacing-md);
+  background: var(--color-gray);
+  border-radius: var(--border-radius-full);
+}
+
+.search-box input {
+  max-width: 200px;
+  padding: var(--spacing-sm);
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--color-light);
+  font-size: 1.125rem;
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-box img {
+  width: 20px;
+  cursor: pointer;
+  transition: opacity var(--transition-base);
+}
+
+.search-box img:hover {
+  opacity: 0.7;
+}
+
+/* ======================
+   HERO SECTION
+   ====================== */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2xl);
+  width: 100%;
+  padding: 60px 10%;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 400px;
+  margin-top: 40px;
+}
+
+.heading {
+  margin-bottom: var(--spacing-xs);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-light);
+}
+
+.para {
+  max-width: 300px;
+  margin-bottom: var(--spacing-md);
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-light);
+}
+
+.app.dark .heading,
+.app.dark .para {
+  color: var(--color-dark);
+}
+
+.shop-Btn {
+  padding: 12px 24px;
+  border: none;
+  background: var(--color-light);
+  color: var(--color-dark);
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.learn-btn{
+  padding: 12px 24px;
+  border: none;
+  background: var( --color-primary-hover);
+  color: var(--color-light);
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  margin-left: 20px;
+}
+
+.shop-Btn:hover {
+  background: hsl(0, 0%, 85%);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.shop-Btn:active {
+  transform: translateY(0);
+}
+
+.hero-banner img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  margin-top: 55px;
+  cursor: pointer;
+  transition: transform var(--transition-base);
+}
+
+.hero-banner img:hover {
+  transform: scale(1.02);
+}
+
+/* ======================
+   CATEGORY SECTION
+   ====================== */
+.Category-container {
+  padding: 80px 7%;
+  background: var(--color-light);
+}
+
+.Category-container .container {
+  /* max-width intentionally fluid for full-bleed sections */
+  margin: 0 auto;
+}
+
+.Category-container h1 {
+  margin-top: var(--spacing-lg);
+  margin-bottom: 30px;
+  color: var(--color-dark);
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: left;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  justify-items: flex-start;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 200px;
+  min-height: 200px;
+  width: 280px;
+  padding: 40px 30px;
+  background: var(--color-gray-light);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-slow);
+}
+
+.category-card:hover {
+  background: hsl(0, 0%, 99%);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.category-card .icon {
+  width: 100px;
+  height: 100px;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-dark);
+}
+
+.category-name {
+  color: var(--color-dark);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.svg {
+  margin: 0 var(--spacing-lg);
+}
+
+/* ======================
+   PRODUCTS SECTION
+   ====================== */
+.Products-container {
+  padding: 80px 7%;
+  background: var(--color-light);
+}
+
+.Products-container .container {
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.Products-container h1 {
+  margin-bottom: 30px;
+  color: var(--color-dark);
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: left;
+}
+
+/* Shop page scaffolding */
+.breadcrumb { color: var(--color-text-secondary); margin: 40px 0; }
+.breadcrumb .sep { margin: 0 8px; }
+.shop-header { display:flex; align-items:center; justify-content: space-between; margin-bottom: 16px; }
+.shop-header .sort { display:flex; gap:8px; align-items:center; }
+.shop-layout { display:grid; grid-template-columns: 260px 1fr; gap: 40px; }
+.filters { background: var(--color-gray-lighter); padding: 16px; border-radius: var(--border-radius-lg); height: fit-content; }
+.filters h3 { margin: 16px 0 8px; font-weight: 700; }
+.plain-list { list-style: none; padding: 0; margin: 0; }
+.plain-list li { margin: 6px 0; }
+.pagination { display:flex; gap:8px; justify-content:center; margin-top: 24px; }
+.pagination .page { padding: 8px 12px; border: 1px solid var(--color-border); background: #fff; border-radius: 8px; color: var(--color-dark); cursor: pointer; }
+
+/* Ensure filter text stays black in both light and dark modes */
+.filters,
+.filters h3,
+.filters label,
+.filters button,
+.filters li { color: var(--color-dark); }
+.app.dark .filters,
+.app.dark .filters h3,
+.app.dark .filters label,
+.app.dark .filters button,
+.app.dark .filters li { color: var(--color-dark); }
+
+.Products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-items: flex-start;
+  text-align: left;
+}
+
+.Product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 200px;
+  min-height: 200px;
+  width: 330px;
+  height: auto;
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all var(--transition-slow);
+  text-align: left;
+}
+
+.Product-card.clickable:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.Product-card img {
+  width: 180px;
+  height: 260px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.Product-card img:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.product-text {
+  min-height: 64px;
+  font-size: 1.2rem;
+  max-width: 300px;
+  font-weight: 600;
+}
+
+.product-para {
+    margin-bottom: 30px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.product-btn {
+  margin-top: auto;
+  padding: 10px 100px;
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-light);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.product-btn:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.product-btn:active {
+  transform: translateY(0);
+}
+
+.products-actions{
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: 34px;
+}
+
+.show-all-btn{
+  padding: 10px 28px;
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-light);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all var(--transition-base);
+}
+
+.show-all-btn:hover{
+  background: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ======================
+   SKELETON LOADING
+   ====================== */
+.skeleton {
+  background: linear-gradient(90deg, #eee 25%, #f5f5f5 37%, #eee 63%);
+  background-size: 400% 100%;
+  border-radius: 8px;
+  animation: shimmer 1.4s ease infinite;
+  text-align: left;
+}
+
+.skeleton.image {
+  width: 160px;
+  height: 160px;
+}
+
+.skeleton.text {
+  height: 16px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* ======================
+   CONTACT SECTION
+   ====================== */
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2xl);
+  margin: 40px auto;
+  padding: 50px;
+  height: 30vh;
+  background: var(--background-color-light);
+}
+
+.contact-heading {
+  margin-bottom: var(--spacing-xs);
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.contact-para {
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.contact-input {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.email-input {
+  padding: 10px 15px;
+  border: 2px solid var(--border-color-light);
+  border-radius: var(--border-radius-sm);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color var(--transition-base);
+}
+
+/* Dark mode border for email input */
+.app.dark .email-input { border-color: var(--border-color-dark); }
+
+.email-input:focus {
+  border-color: var(--color-dark);
+}
+
+/* Ensure focus color is light in dark mode */
+.app.dark .email-input:focus { border-color: var(--border-color-dark); }
+
+.subscribe-btn {
+  padding: 10px 20px;
+  border: none;
+  background: var(--color-dark);
+  color: var(--color-light);
+  font-size: 1rem;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.subscribe-btn:hover {
+  background: var(--color-dark-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.subscribe-btn:active {
+  background: hsl(0, 0%, 30%);
+  transform: translateY(0);
+}
+
+/* ======================
+   FOCUS STYLES
+   ====================== */
+.product-btn:focus,
+.subscribe-btn:focus,
+.shop-Btn:focus {
+  outline: 2px solid var(--color-dark);
+  outline-offset: 2px;
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+   ====================== */
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .para {
+    margin: 0 auto var(--spacing-md);
+  }
+
+  .contact {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .contact-input {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .email-input {
+    width: 100%;
+  }
+
+  .shop-layout { grid-template-columns: 1fr; }
+  .Products { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 15px 5%;
+  }
+
+  .navbar ul li {
+    margin: var(--spacing-xs);
+    font-size: 1rem;
+  }
+
+  .search-box {
+    margin-right: var(--spacing-sm);
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .Products { grid-template-columns: 1fr; }
+}
+
+.product-category{
+    padding: 10px 0;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: gray;
+}
+
+/* ======================
+   DARK MODE TOGGLE
+   ====================== */
+.dark-mode-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-right: var(--spacing-md);
+  padding: 0;
+  border: none;
+  background: var(--color-gray);
+  color: var(--color-light);
+  border-radius: var(--border-radius-full);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.dark-mode-toggle:hover {
+  background: hsl(0, 0%, 20%);
+  transform: scale(1.1);
+}
+
+.dark-mode-toggle:active {
+  transform: scale(0.95);
+}
